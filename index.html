@@ -1,1 +1,261 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title> 3D Banner film</title>
+		<meta charset="UTF-8">
+		<script src="js/modernizr.custom.js"></script>
+		<style>
+			 *, *:after, *:before { 
+ -webkit-box-sizing: border-box; 
+ -moz-box-sizing: border-box; 
+ box-sizing: border-box; 
+ }
 
+body {
+	background: #fbc73b;
+	font-family: 'Lato', Arial, sans-serif;
+	color: #fff;
+}
+
+.wrapper {
+	margin: 0 auto 100px auto;
+	max-width: 960px;
+}
+
+.stage {
+	list-style: none;
+	padding: 0;
+}
+
+.scene {
+	width: 260px;
+	height: 400px;
+	margin: 30px;
+	float: left;
+	-webkit-perspective: 1000px;
+	-moz-perspective: 1000px;
+	perspective: 1000px;
+}
+
+.movie {
+	width: 260px;
+	height: 400px;
+	-webkit-transform-style: preserve-3d;
+	-moz-transform-style: preserve-3d;
+	transform-style: preserve-3d;
+	-webkit-transform: translateZ(-130px);
+	-moz-transform: translateZ(-130px);
+	transform: translateZ(-130px);
+	-webkit-transition: -webkit-transform 350ms;
+	-moz-transition: -moz-transform 350ms;
+	transition: transform 350ms;
+}
+
+.movie:hover {
+	-webkit-transform: rotateY(-78deg) translateZ(20px);
+	-moz-transform: rotateY(-78deg) translateZ(20px);
+	transform: rotateY(-78deg) translateZ(20px);
+}
+
+.movie .poster, 
+.movie .info {
+	position: absolute;
+	width: 260px;
+	height: 400px;
+	background-color: #fff;
+	-webkit-backface-visibility: hidden;
+	-moz-backface-visibility: hidden;
+	backface-visibility: hidden;
+}
+
+.movie .poster  {
+	-webkit-transform: translateZ(130px);
+	-moz-transform: translateZ(130px);
+	transform: translateZ(130px);
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+
+.movie .info {
+	-webkit-transform: rotateY(90deg) translateZ(130px);
+	-moz-transform: rotateY(90deg) translateZ(130px);
+	transform: rotateY(90deg) translateZ(130px);
+	border: 4px solid #fff;
+	font-size: 0.75em;
+}
+
+.csstransforms3d .movie::after {
+	content: '';
+	width: 260px;
+	height: 260px;
+	position: absolute;
+	bottom: 0;
+	box-shadow: 0 30px 50px rgba(0,0,0,0.3);
+	-webkit-transform-origin: 100% 100%;
+	-moz-transform-origin: 100% 100%;
+	transform-origin: 100% 100%;
+	-webkit-transform: rotateX(90deg) translateY(130px);
+	-moz-transform: rotateX(90deg) translateY(130px);
+	transform: rotateX(90deg) translateY(130px);
+	-webkit-transition: box-shadow 350ms;
+	-moz-transition: box-shadow 350ms;
+	transition: box-shadow 350ms;
+}
+
+.csstransforms3d .movie:hover::after {
+	box-shadow: 20px -5px 50px rgba(0,0,0,0.3);
+}
+
+.info header {
+	color: #FFF;
+	padding: 7px 10px;
+	font-weight: bold;
+	height: 195px;
+	background-size: contain;
+	background-repeat: no-repeat;
+	text-shadow: 0px 1px 1px rgba(0,0,0,1);
+}
+
+.info header h1 {
+	margin: 0 0 2px;
+	font-size: 1.4em;
+}
+
+.info header .rating {
+	border: 1px solid #FFF;
+	padding: 0px 3px;
+}
+
+.info p {
+	padding: 1.2em 1.4em;
+	margin: 2px 0 0;
+	font-weight: 700;
+	color: #666;
+	line-height: 1.4em;
+	 
+}
+
+.movie .poster,
+.movie .info,
+.movie .info header {
+	-webkit-transition: box-shadow 350ms;
+	-moz-transition: box-shadow 350ms;
+	transition: box-shadow 350ms;
+}
+
+.csstransforms3d .movie .poster {
+	box-shadow: inset 0px 0px 40px rgba(255,255,255,0);
+}
+
+.csstransforms3d .movie:hover .poster {
+	box-shadow: inset 300px 0px 40px rgba(255,255,255,0.8);
+}
+
+.csstransforms3d .movie .info, 
+.csstransforms3d .movie .info header {
+	box-shadow: inset -300px 0px 40px rgba(0,0,0,0.5);
+}
+
+.csstransforms3d .movie:hover .info, 
+.csstransforms3d .movie:hover .info header {
+	box-shadow: inset 0px 0px 40px rgba(0,0,0,0);
+}
+
+.scene:nth-child(1) .movie .poster {
+  background-image: url(images/1.jpg);
+}
+
+.scene:nth-child(2) .poster {
+  background-image: url(images/2.jpg);
+}
+
+.scene:nth-child(3) .poster {
+  background-image: url(images/3.jpg);
+}
+
+.scene:nth-child(1) .info header {
+	background-image: url(images/11.jpg);
+}
+
+.scene:nth-child(2) .info header {
+	background-image: url(images/22.jpg);
+}
+
+.scene:nth-child(3) .info header {
+	background-image: url(images/33.jpg);
+}
+
+.no-csstransforms3d .movie .poster, 
+.no-csstransforms3d .movie .info {
+	position: relative;
+}
+
+@media screen and (max-width: 60.75em){
+	.scene {
+		float: none;
+		margin: 30px auto 60px;
+	}
+}
+
+		</style>
+	</head>
+	
+	<body>
+		<div class="container">
+			 
+			<div class="wrapper">
+				<ul class="stage clearfix">
+
+					<li class="scene">
+						<div class="movie" onclick="return true">
+							<div class="poster"></div>
+							<div class="info">
+								<header>
+									<h1>Fast & Furious 4</h1>
+									<span class="year">2009 |</span>
+									<span class="duration">107 minutes</span>
+								</header>
+								<p>
+									Five years after escaping from the US,[N 1] Dominic Toretto (Vin Diesel) and his new crew, consisting of his girlfriend Letty (Michelle Rodriguez), Tego Leo (Tego Calderon), Rico Santos (Don Omar), Cara (Mirtha Michelle) and Han Lue (Sung Kang), are hijacking fuel tankers in the Dominican Republic.  
+								</p>
+							</div>
+						</div>
+					</li>
+
+					<li class="scene">
+						<div class="movie" onclick="return true">
+							<div class="poster"></div>
+							<div class="info">
+								<header>
+									<h1>Furious 7</h1>
+									<span class="year">2015 |</span>
+									<span class="duration">140 minutes</span>
+								</header>
+								<p>
+									Furious 7 (alternatively known as Fast & Furious 7 and Fast Seven)[4] is a 2015 American action film directed by James Wan and written by Chris Morgan. It is the seventh installment in The Fast and the Furious franchise. The film stars Vin Diesel, Paul Walker, Dwayne Johnson, Michelle Rodriguez, Tyrese Gibson, Chris "Ludacris" Bridges, Jordana Brewster, Djimon Hounsou and Jason Statham. 
+								</p>
+							</div>
+						</div>
+					</li>
+
+					<li class="scene">
+						<div class="movie" onclick="return true">
+							<div class="poster"></div>
+							<div class="info">
+								<header>
+									<h1>CRANK</h1>
+									<span class="year">2006 |</span>
+									<span class="duration">104 minutes</span>
+								</header>
+								<p>
+									Crank is a 2006 American action comedy film written and directed by Mark Neveldine and Brian Taylor (in their directorial debuts) and starring Jason Statham, Amy Smart and Jose Pablo Cantillo. The plot centres on a British hitman in Los Angeles named Chev Chelios who is poisoned and must keep his adrenaline flowing constantly in order to keep himself alive. 
+								</p>
+							</div>
+						</div>
+					</li>
+
+				</ul>
+			</div>
+		</div>
+	</body>
+</html>
